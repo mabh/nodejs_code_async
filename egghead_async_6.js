@@ -31,10 +31,10 @@ var values = Rx.Observable.fromArray([
 
 
 Rx.Observable.zip(ping1, ping2, values, function(e1, e2, e3) {
-    return e1.value + e2.value + e3.value;
+    return [e1, e2, e3];                    //like zipArray
 }).subscribe (
     function(x) {
-        console.log('Next: ' + x);
+        console.log('Next: ' + x[0].value);
     },
     function(err) {
         console.log('Error: ' + err);
